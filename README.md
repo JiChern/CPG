@@ -13,3 +13,8 @@ Based on the analysis of undesired phase locking phenomena in the original diffu
 \end{cases}
 ```
 where $z_i$ represents the state vector of a neuron, $F(z_i)$ is the internal oscillator of the neuron, $R(\theta_i)$ is a 2D rotation matrix with the desired phase lag $\theta_i$, and $\gamma_i$ indicates the coupling strength. The function $\text{Perp}_{z_i}$ is introduced to optimize the transient dynamics. We have uploaded a MATLAB version of the model, which can be executed to observe its performance in gait transition.
+
+<p align="center">
+  <img src="https://github.com/JiChern/CPG/blob/main/fig/gait_transition_curves.png?raw=true" alt="Sublime's custom image"/>
+</p>
+
