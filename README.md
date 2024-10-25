@@ -4,7 +4,7 @@
 This repository includes code implementations of the paper titled "Free Gait Transition and Stable Motion Generation Using CPG-based Locomotion Control for Hexapod Robots". The research involves an enhanced central pattern generator and a limb motion generator that considers stability criteria
 
 ## Improved CPG model
-Based on the analysis of undesired phase locking phenomena in the original diffusive CPG model, we propose an enhanced model that allows for gait transition between arbitrary gaits. Additionally, the system dynamics during the transient process are improved. The system dynamics of the proposed model are governed by the following differential equations:
+Based on the analysis of undesired phase locking phenomena in the original diffusive CPG model[[1]](#1), we propose an enhanced model that allows for gait transition between arbitrary gaits. Additionally, the system dynamics during the transient process are improved. The system dynamics of the proposed model are governed by the following differential equations:
 
 ```math
 \dot{z}_i = \begin{cases}
@@ -18,3 +18,10 @@ where $z_i$ represents the state vector of a neuron, $F(z_i)$ is the internal os
   <img src="https://github.com/JiChern/CPG/blob/main/fig/gait_transition_curves.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
+Other types of CPG models are also available in the 'cpg_matlab' folder, which can be executed to compare with the proposed model.
+
+## References
+<a id="1">[1]</a> 
+Haitao Yu and Haibo Gao and Liang Ding and Mantian Li and Zongquan Deng and Guangjun Liu (2016). 
+Gait generation with smooth transition using CPG-based locomotion control for hexapod walking robot. 
+IEEE Transactions on Industrial Electronics, 63, 5488-5500.
