@@ -18,10 +18,22 @@ where $z_i$ represents the state vector of a neuron, $F(z_i)$ is the internal os
   <img src="https://github.com/JiChern/CPG/blob/main/fig/gait_transition_curves.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
-Other types of CPG models are also available in the 'cpg_matlab' folder, which can be executed to compare with the proposed model.
+Other types of CPG models [[2]](#1)[[3]](#1) are also available in the 'cpg_matlab' folder, which can be executed to compare with the proposed model.
 
 ## References
 <a id="1">[1]</a> 
 Haitao Yu and Haibo Gao and Liang Ding and Mantian Li and Zongquan Deng and Guangjun Liu (2016). 
 Gait generation with smooth transition using CPG-based locomotion control for hexapod walking robot. 
 IEEE Transactions on Industrial Electronics, 63, 5488-5500.
+
+<a id="1">[2]</a> 
+Ludovic Righetti and Auke Jan Ijspeert (2008). 
+Pattern generators with sensory feedback for the control of quadruped locomotion. 
+2008 IEEE International Conference on Robotics and Automation, 819-824.
+
+<a id="1">[3]</a> 
+Wei Xiao and Wei Wang (2014). 
+Hopf oscillator-based gait transition for a quadruped robot. 
+2014 IEEE International Conference on Robotics and Biomimetics, 2074-2079.
+
+
