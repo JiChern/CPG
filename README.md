@@ -23,6 +23,10 @@ Other types of CPG models [[2]](#1)[[3]](#1) are also available in the 'cpg_matl
 ## CPG-based locomotion control for hexapod robot
 We propose a motion generator that is based on the proposed CPG model. This motion generator is responsible for planning the leg motion trajectories for both the stance and swing stages, while also taking into consideration the stability criteria. The overall control framework can be seen in the figure below.
 
+<p align="center">
+  <img src="https://github.com/JiChern/CPG/blob/main/fig/motion_fram.jpg?raw=true" alt="Sublime's custom image"/>
+</p>
+
 ## References
 <a id="1">[1]</a> 
 Haitao Yu and Haibo Gao and Liang Ding and Mantian Li and Zongquan Deng and Guangjun Liu (2016). 
