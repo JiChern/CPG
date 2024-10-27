@@ -41,7 +41,7 @@ The Python implementation of the motion generation framework has been uploaded i
 </p>
 
 # Installation
-Prerequirments: Ubuntu 20.04, ROS noetic with python 3.8 and Gazebo installed
+Prerequisites: Ubuntu 20.04, ROS Noetic with Python 3.8, and Gazebo installed.
 ## create a workspace:
 ```console
 $ mkdir -p ~/catkin_ws/src
