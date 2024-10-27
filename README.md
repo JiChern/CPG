@@ -30,6 +30,17 @@ We propose a motion generator that is based on the proposed CPG model. This moti
 The Python implementation of the motion generation framework has been uploaded in the 'hex_motion_gen' folder. The package allows users to generate limb motion trajectories for further evaluations. It is recommended to evaluate the generated joint trajectories in the Adams simulator. Detailed instructions for installing and using the package are summarized in the readme file located in the 'hex_motion_gen' folder.
 
 
+### Gait transition from caterpillar to metachronal
+<p align="center">
+  <img src="https://github.com/JiChern/CPG/blob/main/fig/cater_metach.gif?raw=true" alt="Sublime's custom image"/>
+</p>
+
+### Gait transition from tetrapod to caterpillar
+<p align="center">
+  <img src="https://github.com/JiChern/CPG/blob/main/fig/tetra_cater.gif?raw=true" alt="Sublime's custom image"/>
+</p>
+
+
 
 ## References
 <a id="1">[1]</a> 
