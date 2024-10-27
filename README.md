@@ -27,6 +27,10 @@ We propose a motion generator that is based on the proposed CPG model. This moti
   <img src="https://github.com/JiChern/CPG/blob/main/fig/motion_fram.jpg?raw=true" alt="Sublime's custom image"/>
 </p>
 
+The Python implementation of the motion generation framework has been uploaded in the 'hex_motion_gen' folder. The package allows users to generate limb motion trajectories for further evaluations. It is recommended to evaluate the generated joint trajectories in the Adams simulator. Detailed instructions for installing and using the package are summarized in the readme file located in the 'hex_motion_gen' folder.
+
+
+
 ## References
 <a id="1">[1]</a> 
 Haitao Yu and Haibo Gao and Liang Ding and Mantian Li and Zongquan Deng and Guangjun Liu (2016). 
