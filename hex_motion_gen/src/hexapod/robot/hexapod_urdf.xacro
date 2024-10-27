@@ -1,0 +1,406 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:property name="M_PI" value="3.1415926535897931" />
+<xacro:macro name="hexapod" params="parent *origin">
+<xacro:property name="M_PI" value="3.1415926535897931" />
+
+
+<!-- <xacro:include filename="$(find franka_description)/robots/panda_gazebo.xacro"/> -->
+<!-- <xacro:include filename="$(find franka_description)/robots/hand.xacro"/> -->
+
+
+
+
+<!-- <xacro:include filename="$(find realsense_ros_gazebo)/xacro/inertia_calc.xacro"/> -->
+  <!-- <xacro:include filename="$(find realsense_ros_gazebo)/xacro/tracker.xacro"/> -->
+  <!-- <xacro:include filename="$(find hexapod)/robot/depthcam.xacro"/> -->
+
+
+      <joint name="j_hexapod_attachment" type="fixed">
+        <parent link="${parent}"/>
+        <child link="MP_BODY"/>
+        <origin xyz="0 0 0" rpy="0 0 0.0" />
+        <insert_block name="origin" />
+      </joint>
+
+      
+      
+
+      <link name="MP_BODY">
+        <inertial>
+          <origin xyz="0 0 0.02" rpy="0 0 0" />
+          <mass value="0.8"/>
+          <!-- <mass value="10.0"/> -->
+          <inertia ixx="0.0010867"  ixy="0"  ixz="0" iyy="0.0010867" iyz="0" izz="0.00196" />
+          <!-- <inertia ixx="31.081800"  ixy="2.5460189"  ixz="20.318174" iyy="63.787776" iyz="1.6417863" izz="53.316425" /> -->
+        </inertial>
+        <visual>
+          <origin xyz="-0.071 -0.075 0.041" rpy="-1.57 0 0" />
+          <geometry>
+            <!--box size="0.102 0.109 0.106" /-->
+            <mesh filename="package://hexapod/meshes/test4.STL"  scale="0.001 0.001 0.001"/>
+          </geometry>
+          <material name="Grey">
+            <color rgba="0.20 0.20 0.20 1.0"/>
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0.02" rpy="0 0 0" />
+          <geometry>
+            <!-- <box size="0.14 0.15 0.1"/> -->
+            <cylinder radius="0.07" length="0.04"/>
+          </geometry>
+
+        </collision>
+      </link>
+
+      
+
+      <gazebo reference="MP_BODY">    
+        <material>Gazebo/Grey</material>
+      </gazebo>
+
+    <xacro:leg_l xyz="0.038 0.046 0.02"  rpy="0 ${M_PI} ${-M_PI/2}" r1p1y1="0 ${M_PI} ${-M_PI/3}" suffix="rf"/>
+    <xacro:leg_l xyz="0.038 0.0  0.02"  rpy="0 ${M_PI} ${-M_PI/2}" r1p1y1="0 ${M_PI} 0" suffix="rm"/>
+    <xacro:leg_l xyz="0.038 -0.046  0.02"  rpy="0 ${M_PI} ${-M_PI/2}" r1p1y1="0 ${M_PI} ${M_PI/3}" suffix="rr"/>
+
+    <xacro:leg_l xyz="-0.038 0.046  0.02"  rpy="0 ${-M_PI} ${3*M_PI/2}" r1p1y1="0 ${M_PI} ${M_PI + M_PI/3}" suffix="lf"/>
+    <xacro:leg_l xyz="-0.038 0.0  0.02"  rpy="0 ${-M_PI} ${3*M_PI/2}" r1p1y1="0 ${M_PI} ${M_PI}" suffix="lm"/>
+    <xacro:leg_l xyz="-0.038 -0.046  0.02"  rpy="0 ${-M_PI} ${3*M_PI/2}" r1p1y1="0 ${M_PI} ${M_PI - M_PI/3}" suffix="lr"/> 
+
+
+</xacro:macro>
+
+ <xacro:macro name="utilities" params="xyz rpy">
+  <link name="util_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"  />
+      <geometry>
+        <box size="0.14 0.08 0.06" />
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.20 0.20 0.20 1.0"/>
+      </material>
+    </visual>
+    <collision>
+
+      <origin xyz="0 0 0" rpy="0 0 0"  />
+
+      <geometry>
+        <box size="0.14 0.08 0.06" />
+      </geometry>
+
+    </collision>
+  </link>
+
+  <link name="util_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"  />
+      <geometry>
+        <box size="0.04 0.06 0.02" />
+      </geometry>
+
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"  />
+      <geometry>
+        <box size="0.14 0.08 0.02" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="j_util_1_attachment" type="fixed">
+        <parent link="MP_BODY"/>
+        <child link="util_1"/>
+        <origin xyz="${xyz}" rpy="${rpy}" />
+
+  </joint>
+
+  <joint name="j_util_2_attachment" type="fixed">
+        <parent link="util_1"/>
+        <child link="util_2"/>
+        <origin xyz="0 0.066 -0.02" rpy="0 0 0" />
+
+  </joint>
+
+
+ </xacro:macro>
+
+
+ <xacro:macro name="leg_l" params="xyz rpy r1p1y1 suffix">
+
+
+
+  <link name="c1_${suffix}">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"  />
+      <mass value="0.024357719"/>
+     <inertia ixx="0.0051411124"  ixy="-0.00057530255"  ixz="-0.000024729049" iyy="0.0081915737" iyz="-0.000019223094" izz="0.0011379812" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0.012 0" rpy="0 0 0"  />
+      <geometry>
+        <!--box size="0.045 0.022 0.0325" /-->
+        <mesh filename="package://hexapod/meshes/right1_Link.STL"  scale="1 1 1"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.20 0.20 0.20 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <!-- <origin xyz="0 0.012 0" rpy="0 0 0"  />
+      <geometry>
+        <mesh filename="package://hexapod/meshes/right1_Link.STL"  scale="1 1 1"/>
+      </geometry> -->
+      <origin rpy="1.57 0 0" xyz="0 0.0 0" />
+
+      <geometry>
+        <cylinder radius="0.01" length="0.03"/>
+      </geometry>
+
+    </collision>
+  </link>
+
+  <link name="connect_${suffix}">
+    <origin xyz="0 0 0" rpy="0 0 0"  />
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="0.97559947"/>
+      <inertia ixx="3.1081800"  ixy="-0.25460189"  ixz="2.0318174" iyy="6.3787776" iyz="0.16417863" izz="5.3316425" />
+    </inertial>
+  </link>
+
+  <joint name="j_connect_${suffix}" type="fixed">
+    <parent link="MP_BODY"/>
+    <child link="connect_${suffix}"/>
+    <origin xyz="${xyz}" rpy="${rpy}" />
+
+  </joint>
+
+
+  <link name="thigh_${suffix}">
+    <inertial>
+      <origin rpy="0 1.57 0" xyz="0 0.0 0" />
+      <mass value="0.024357719"/>
+     <inertia ixx="0.0051411124"  ixy="-0.00057530255"  ixz="-0.000024729049" iyy="0.0081915737" iyz="-0.000019223094" izz="0.0011379812" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.004" rpy="0 0 0"  />
+      <geometry>
+        <!--box size="0.045 0.022 0.0325" /-->
+        <mesh filename="package://hexapod/meshes/LinkThigh.STL"  scale="1 1 1"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.20 0.20 0.20 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.57 0" xyz="0 0.0 0" />
+
+      <geometry>
+        <cylinder radius="0.01" length="0.05"/>
+      </geometry>
+
+    </collision>
+  </link>
+
+
+
+  <link name="tibia_${suffix}">
+    <inertial>
+      <origin rpy="0 1.57 0.524" xyz="-0.027 -0.017 0" />
+
+      <mass value="0.002"/>
+      <inertia ixx="0.0000024045"  ixy="0"  ixz="0" iyy="0.0000024045" iyz="0" izz="0.000000009" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <!--box size="0.045 0.022 0.0325" /-->
+        <!-- <mesh filename="package://robot_envs/hexapod/robot/meshes/LinkTibia.STL"  scale="1 1 1"/> -->
+        <mesh filename="package://hexapod/meshes/NewTibia.STL"  scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.20 0.20 0.20 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.57 0.524" xyz="-0.027 -0.017 0" />
+      <geometry>
+        <cylinder radius="0.003" length="0.12"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!-- <link name="tibia_e_${suffix}">
+
+      <visual><geometry><sphere radius="0.003"/></geometry></visual>
+      <collision><geometry><sphere radius="0.005"/></geometry></collision>
+      <inertial>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <mass value="0.001"/>
+          <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1"  iyz="0.0" izz="0.1"/>
+      </inertial>
+  </link> -->
+
+  <link name="tibia_e_${suffix}">
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry><sphere radius=".006"/></geometry>
+        </visual>
+        <collision><geometry><sphere radius=".006"/></geometry></collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.01"/>
+            <inertia ixx="0.00144" ixy="0.0" ixz="0.0" iyy="0.00144"  iyz="0.0" izz="0.00144"/>
+        </inertial>
+  </link>
+
+  <!-- here are an edit including a ball joint -->
+
+  <joint name="j_c1_${suffix}" type="revolute">
+    <parent link="connect_${suffix}"/>
+    <child link="c1_${suffix}"/>
+    <origin xyz="0 0 0" rpy="${r1p1y1}" />
+    <axis xyz="0 0 -1" />
+    <limit effort="5.8" velocity="10" lower="-2.6179939" upper="2.6179939" />
+    <dynamics damping="0.5" friction="0.0" />
+  </joint>
+
+
+  <joint name="j_thigh_${suffix}" type="revolute">
+    <parent link="c1_${suffix}"/>
+    <child link="thigh_${suffix}"/>
+    <origin xyz="0 0.053 0" rpy="${M_PI/2} ${-M_PI/12} ${M_PI/2}" />
+    <axis xyz="0 0 1" />
+    <limit effort="5.8" velocity="10" lower="-2.6179939" upper="2.6179939" />
+    <dynamics damping="0.5" friction="0.0" />
+  </joint>
+
+  <joint name="j_tibia_${suffix}" type="revolute">
+    <parent link="thigh_${suffix}"/>
+    <child link="tibia_${suffix}"/>
+    <!-- <origin xyz="0 ${thigh_offset_y} ${thigh_offset_z}" rpy="-1.5707 0 3.14159" /> -->
+
+    <origin rpy="3.141592653589793 0 ${2*M_PI/3}" xyz="0.0525 0 0"/>
+    <axis xyz="0 0 -1" />
+    <limit effort="5.8" velocity="10" lower="-2.5" upper="2.5" />
+    <dynamics damping="0.5" friction="0.0" />
+  </joint>
+
+  <joint name="j_tibia_e_${suffix}" type="fixed">
+    <parent link="tibia_${suffix}"/>
+    <child link="tibia_e_${suffix}"/>
+    <!-- <origin xyz="0 ${thigh_offset_y} ${thigh_offset_z}" rpy="-1.5707 0 3.14159" /> -->
+
+    <origin rpy="0 0 0" xyz="-0.084 -0.05 0"/>
+  </joint>
+
+
+
+
+   <transmission name="t_c1_${suffix}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j_c1_${suffix}">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>    
+    </joint>
+    <actuator name="m_c1_${suffix}">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+   <transmission name="t_thigh_${suffix}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j_thigh_${suffix}">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>    
+    </joint>
+    <actuator name="m_thigh_${suffix}">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+   <transmission name="t_tibia_${suffix}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j_tibia_${suffix}">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="m_tibia_${suffix}">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <gazebo reference="MP_BODY">    
+    <mu1>0.61</mu1>
+    <mu2>0.61</mu2>
+  </gazebo>
+
+  <gazebo reference="c1_${suffix}">    
+    <material>Gazebo/Grey</material>
+    <mu1>0.61</mu1>
+    <mu2>0.61</mu2>
+  </gazebo>
+
+  <gazebo reference="connect_${suffix}">    
+    <mu1>0.61</mu1>
+    <mu2>0.61</mu2>
+  </gazebo>
+
+  <gazebo reference="thigh_${suffix}">    
+    <material>Gazebo/Grey</material>
+    <mu1>0.61</mu1>
+    <mu2>0.61</mu2>
+  </gazebo>
+
+  <gazebo reference="tibia_${suffix}">    
+    <material>Gazebo/Grey</material>
+   <mu1>0.61</mu1>
+    <mu2>0.61</mu2>
+
+  </gazebo>
+
+  <gazebo reference="tibia_e_${suffix}">    
+    <material>Gazebo/Grey</material>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
+
+    <kp>1000000.0</kp>
+    <kd>10.0</kd>
+  </gazebo>
+
+
+
+
+  <!-- <gazebo reference="theta_link_${suffix}">    
+    <material>Gazebo/Grey</material>
+   <mu1>0.61</mu1>
+    <mu2>0.61</mu2>
+
+  </gazebo> -->
+
+  <!-- <gazebo reference="foot_link_${suffix}">    
+    <material>Gazebo/Grey</material>
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+
+    <kp>1000000.0</kp>
+    <kd>10.0</kd>
+
+  </gazebo> -->
+
+  <!-- <gazebo reference="footc_${suffix}">    
+    <material>Gazebo/White</material>
+  </gazebo> -->
+
+  
+</xacro:macro>
+
+
+
+</robot>

@@ -1,0 +1,32 @@
+
+<launch>
+
+  <rosparam file="$(find hexapod_control)/config/hexapod_control.yaml" command="load"/>
+  <!-- <rosparam file="$(find hexapod_control)/config/arm_control.yaml" command="load"/> -->
+
+
+    <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/hexapod" args="hexapod_joint_controllers joint_state_controller"/> -->
+  <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/hexapod" args=" j_c1_lf_position_controller j_c1_rf_position_controller j_c1_lm_position_controller j_c1_rm_position_controller j_c1_lr_position_controller j_c1_rr_position_controller j_thigh_lf_position_controller j_thigh_rf_position_controller j_thigh_lm_position_controller j_thigh_rm_position_controller j_thigh_lr_position_controller j_thigh_rr_position_controller j_tibia_lf_position_controller j_tibia_rf_position_controller j_tibia_lm_position_controller
+     j_tibia_rm_position_controller j_tibia_lr_position_controller j_tibia_rr_position_controller joint_state_controller
+     arm_1_joint1_controller arm_1_joint2_controller arm_1_joint3_controller arm_1_joint4_controller arm_1_joint5_controller arm_1_joint6_controller arm_1_joint7_controller
+     arm_2_joint1_controller arm_2_joint2_controller arm_2_joint3_controller arm_2_joint4_controller arm_2_joint5_controller arm_2_joint6_controller arm_2_joint7_controller"/> -->
+
+    <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/hexapod" args=" j_c1_lf_position_controller j_c1_rf_position_controller j_c1_lm_position_controller j_c1_rm_position_controller j_c1_lr_position_controller j_c1_rr_position_controller j_thigh_lf_position_controller j_thigh_rf_position_controller j_thigh_lm_position_controller j_thigh_rm_position_controller j_thigh_lr_position_controller j_thigh_rr_position_controller j_tibia_lf_position_controller j_tibia_rf_position_controller j_tibia_lm_position_controller
+     j_tibia_rm_position_controller j_tibia_lr_position_controller j_tibia_rr_position_controller joint_state_controller 
+    panda_arm_1_controller panda_arm_2_controller panda_hand_1_controller panda_hand_2_controller"/> -->
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/hexapod" args=" j_c1_lf_position_controller j_c1_rf_position_controller j_c1_lm_position_controller j_c1_rm_position_controller j_c1_lr_position_controller j_c1_rr_position_controller j_thigh_lf_position_controller j_thigh_rf_position_controller j_thigh_lm_position_controller j_thigh_rm_position_controller j_thigh_lr_position_controller j_thigh_rr_position_controller j_tibia_lf_position_controller j_tibia_rf_position_controller j_tibia_lm_position_controller
+     j_tibia_rm_position_controller j_tibia_lr_position_controller j_tibia_rr_position_controller joint_state_controller 
+    "/>
+    
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/hexapod/joint_states" />
+  </node>
+
+</launch>

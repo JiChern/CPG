@@ -1,0 +1,23 @@
+  <launch>
+   <!-- Load the urdf into the parameter server. -->
+    <!-- <arg name="node_start_delay" default="1.0" />   -->
+    <node pkg="robot_servo" type="robot_servo_talker" name="robot_servo_talker" />
+    <param name="robot_description" textfile="$(find hexapod)/robot/hexapod.urdf"/>
+    
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" respawn="true"/>
+    <node pkg="robot_pdu" type="power_manager" name="power_manager" respawn="true"/>
+    <node pkg="hexapod" type="walk_manager.py" name="walk_manager" respawn="true"/>
+    <node pkg="robot_ad_hoc" type="ad_hoc_manager" name="ad_hoc_manager" respawn="false"/>
+    <node pkg="hexapod" type="auto_nav.py" name="navigation_manager" respawn="true"/>
+
+    <node pkg="hexapod" type="main_node.py" name="main_node" respawn="true"/>
+
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="align_depth" value="true"/>
+    </include>
+
+    <include file="$(find navigation_robot)/launch/rtabmap_rl.launch">
+        <arg name="localization" value="true"/>
+    </include>
+
+  </launch>

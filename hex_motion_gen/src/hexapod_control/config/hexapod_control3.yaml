@@ -1,0 +1,207 @@
+hexapod:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 200  
+  
+  # Position Controllers ---------------------------------------
+
+
+  # HEAD
+  j_c1_lf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_c1_lf
+    pid: {p: 1000.0, i: 0.01, d: 10.0}
+
+
+
+  j_c1_rf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_c1_rf
+    pid: {p: 1000.0, i: 0.01, d: 10.0}
+
+
+
+  j_c1_lm_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_c1_lm
+    pid: {p: 1000.0, i: 0.01, d: 10.0}
+
+
+
+  j_c1_rm_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_c1_rm
+    pid: {p: 1000.0, i: 0.01, d: 10.0}
+
+
+
+  j_c1_lr_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_c1_lr
+    pid: {p: 1000.0, i: 0.01, d: 10.0}
+
+
+
+  j_c1_rr_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_c1_rr
+    pid: {p: 1000.0, i: 0.01, d: 10.0}
+
+
+
+  j_thigh_lf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_thigh_lf
+    pid: {p: 1000.0, i: 0.01, d: 1.0}
+
+
+
+  j_thigh_rf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_thigh_rf
+    pid: {p: 1000.0, i: 0.01, d: 1.0}
+
+
+
+  j_thigh_lm_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_thigh_lm
+    pid: {p: 1000.0, i: 0.01, d: 1.0}
+
+
+
+  j_thigh_rm_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_thigh_rm
+    pid: {p: 1000.0, i: 0.01, d: 1.0}
+
+
+
+  j_thigh_lr_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_thigh_lr
+    pid: {p: 1000.0, i: 0.01, d: 1.0}
+
+
+
+  j_thigh_rr_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_thigh_rr
+    pid: {p: 1000.0, i: 0.01, d: 1.0}
+
+
+
+  j_tibia_lf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_tibia_lf
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+
+  j_tibia_rf_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_tibia_rf
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+
+  j_tibia_lm_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_tibia_lm
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+
+  j_tibia_rm_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_tibia_rm
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+
+  j_tibia_lr_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_tibia_lr
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+
+  j_tibia_rr_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: j_tibia_rr
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+    
+  
+  arm_1_joint1_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_1_joint1
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+  arm_1_joint2_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_1_joint2
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_1_joint3_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_1_joint3
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_1_joint4_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_1_joint4
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_1_joint5_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_1_joint5
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_1_joint6_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_1_joint6
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_1_joint7_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_1_joint7
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+  arm_2_joint1_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint1
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+
+  arm_2_joint2_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint2
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_2_joint3_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint3
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_2_joint4_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint4
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_2_joint5_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint5
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_2_joint6_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint6
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
+
+  arm_2_joint7_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint7
+    pid: {p: 1000.0, i: 0.01, d: 0.0}
