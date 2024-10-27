@@ -1,3 +1,5 @@
+# Authors
+[Ji Chen](mailto:ji.chenuk@gmail.com), [Li Fan](mailto:fanli77@zju.edu.cn) and [Chao Xu](mailto:cxu@edu.zju.cn)
 
 # Free Gait Transition and Stable Motion Generation Using CPG-based Locomotion Control for Hexapod Robots
 ## Introduction
