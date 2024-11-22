@@ -1,9 +1,9 @@
 
 # Free Gait Transition and Stable Motion Generation Using CPG-based Locomotion Control for Hexapod Robots
-
+[click here to read the paper](https://link.springer.com/article/10.1007/s11071-024-10550-w#citeas)
 # Authors
 [Ji Chen](mailto:ji.chenuk@gmail.com), [Li Fan](mailto:fanli77@zju.edu.cn) and [Chao Xu](mailto:cxu@edu.zju.cn)
-[click here to read the paper](https://link.springer.com/article/10.1007/s11071-024-10550-w#citeas)
+
 
 ## Introduction
 This repository includes code implementations of the paper titled "Free Gait Transition and Stable Motion Generation Using CPG-based Locomotion Control for Hexapod Robots" . The research involves an enhanced central pattern generator and a limb motion generator that considers stability criteria.
